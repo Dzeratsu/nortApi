@@ -1,7 +1,10 @@
-let date = {
-    "date": 123,
-    "date2": "testDate"
-}
-export const getMonthOrders = (req, res) => {
-    res.status(200).json(date)
+import mongoose from 'mongoose'
+import addOrder from '../../schema/order.js'
+import {decoderToken} from "../../config/decToken.js";
+
+export const getMonthOrders = async (req, res) => {
+    const token = req.headers.authorization.split(' ')
+    const manager = await decoderToken(token[1])
+    const allOrder = await mongoose.model(manager, addOrder, manager).find()
+    res.status(200).json(allOrder)
 }

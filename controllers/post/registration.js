@@ -18,6 +18,7 @@ export const registration = async (req, res) => {
         const user = {
             'login': login[0],
             'eMail': req.body.email,
+            'FIO':req.body.FIO,
             'password': hashPassword
         }
         let testEmail = await regUser.findOne({'eMail': user.eMail})

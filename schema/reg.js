@@ -3,6 +3,7 @@ const Schema = mongoose.Schema
 const registredUser = new Schema ({
     login: {type:String, requred: true},
     eMail: {type: String, requred: true},
+    FIO: {type: Array, requred: true},
     password: {type: String, requred: true},
     acsessLvl: {type: Number, default: 2},
     registredAt: {type: Date, default: Date.now()}

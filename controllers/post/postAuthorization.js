@@ -27,6 +27,7 @@ export const postAuthorization = async (req, res) => {
                             let data = {
                                 "user": req.body.login,
                                 "status": "sucssec",
+                                "acsess": searchUser.acsessLvl,
                                 "token": token
                             }
                             res.status(200).json(data)

@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 const AddOrder = new Schema({
     date: {type: Date, default: Date.now},
+    month: {type: Number, max: 11},
     manager: String,
     source: {type: Number, min: 0, max: 1},
     id: Number,

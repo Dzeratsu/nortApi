@@ -4,15 +4,16 @@ const AddOrder = new Schema({
     date: {type: Date, default: Date.now},
     month: {type: Number, max: 11},
     manager: String,
-    source: {type: Number, min: 0, max: 1},
+    source: {type: Number, min: 0, max: 3},
     id: Number,
     name: String,
-    eMail: String,
+    email: String,
     phone: {type:String, maxlenght: 11},
     sity: String,
     status: {type: Number, min:0, max: 6, default: 0},
-    textOrder: {type: String, required: true},
-    result: {type:[String], default: []},
+    textOrder: {type: String},
+    product:{type: Array},
+    result: {type:[Object], default: []},
     read: {type:Boolean, default: false}
 })
 /*const OrderSheme = mongoose.model('OrderScheme', AddOrder)*/

@@ -11,7 +11,12 @@ export const postAddOrder = async (req, res) => {
                 var order = mongoose.model(manager, addOrder, manager)
         }
         let abc = new order(req.body)
-        abc.id = await mongoose.model('vasya').find().count() + 1
+        let lastOrder = await mongoose.model(manager).find().limit(1).sort({$natural:-1})
+        if(lastOrder[0].id !== undefined){
+        abc.id = lastOrder[0].id + 1
+        }else {
+                abc.id = 1
+        }
         try{
                 let sav = await abc.save()
                 console.log(sav)

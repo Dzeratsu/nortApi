@@ -10,18 +10,21 @@ export const postAddOrder = async (req, res) => {
         }else {
                 var order = mongoose.model(manager, addOrder, manager)
         }
-        let abc = new order(req.body)
+        let orderdData = new order(req.body)
+        if(orderdData.manager == ''){
+                orderData.manager = manager
+        }
         let lastOrder = await mongoose.model(manager).find().limit(1).sort({$natural:-1})
         if(lastOrder[0].id !== undefined){
-        abc.id = lastOrder[0].id + 1
+                orderdData.id = lastOrder[0].id + 1
         }else {
-                abc.id = 1
+                orderdData.id = 1
         }
         try{
-                let sav = await abc.save()
+                let sav = await orderdData.save()
                 console.log(sav)
                 console.log('sucsses')
-                res.status(200).send('sucsses')
+                res.status(201).send('sucsses')
         }
         catch (e){
                 console.log(e)

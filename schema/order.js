@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 const AddOrder = new Schema({
     date: {type: Date, default: Date.now},
     month: {type: Number, max: 11},
-    manager: String,
+    manager: {type:String, requred: true},
     source: {type: Number, min: 0, max: 3},
     id: Number,
     name: String,
@@ -12,7 +12,7 @@ const AddOrder = new Schema({
     sity: String,
     status: {type: Number, min:0, max: 6, default: 0},
     textOrder: {type: String},
-    product:{type: Array},
+    product:{type: [Object], default: []},
     result: {type:[Object], default: []},
     read: {type:Boolean, default: false}
 })

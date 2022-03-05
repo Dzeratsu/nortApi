@@ -2,7 +2,6 @@ import mongoose from 'mongoose'
 import addOrder from '../../schema/order.js'
 import {decoderToken} from "../../config/decToken.js";
 
-
 export const putEditOrder = async (req, res) => {
     const token = req.headers.authorization.split(' ')
     const manager = await decoderToken(token[1])

@@ -14,7 +14,6 @@ let err404 = {
     info: 'Пользователь не найден'
 }
 export const postAuthorization = async (req, res) => {
-    console.log(req.body)
             if(req.body.login === '' || req.body.password === ''){
                 res.status(400).json(err400)
             }else {
@@ -25,10 +24,9 @@ export const postAuthorization = async (req, res) => {
                         if(result){
                             const token = generateToken(req.body.login)
                             let data = {
-                                "user": req.body.login,
                                 "status": "sucssec",
-                                "acsess": searchUser.acsessLvl,
-                                "token": token
+                                "token": token,
+                                "expires_in": 3600
                             }
                             res.status(200).json(data)
                             console.log('auth.sucssec')
